@@ -31,18 +31,20 @@ public class TagFrame extends JFrame {
 
 	
 	private class doArrows implements KeyListener{
-		
 		@Override
 		public void keyTyped(KeyEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
-
 		@Override
 		public void keyPressed(KeyEvent e) {
 			int boundaryheight = displayPanel.getHeight();
 			int boundarywidth = displayPanel.getWidth();
+			
 			int ID = e.getKeyCode();
+			
+			
+			
 			if(ID == KeyEvent.VK_DOWN) {
 				itplayer.move(101, boundaryheight, boundarywidth);
 			}
@@ -55,6 +57,8 @@ public class TagFrame extends JFrame {
 			if(ID == KeyEvent.VK_RIGHT) {
 				itplayer.move(103, boundaryheight, boundarywidth);
 			}
+			
+			repaint();
 		}
 
 		@Override
@@ -111,6 +115,7 @@ public class TagFrame extends JFrame {
 		startButton.setHorizontalAlignment(SwingConstants.LEFT);
 		scorePanel.add(startButton);
 		startButton.addActionListener(new startTimer());
+		startButton.setFocusable(false);
 
 		
 		JLabel player1Label = new JLabel("Player 1");

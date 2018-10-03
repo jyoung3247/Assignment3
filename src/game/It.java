@@ -1,5 +1,6 @@
 package game;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
@@ -7,8 +8,8 @@ import java.awt.geom.Ellipse2D;
 public class It implements Player {
 	private int x=0;
 	private int y=0;
-	private int stepX = 1;
-	private int stepY = 1;
+	private int stepX = 2;
+	private int stepY = 2;
 	
 	public int getX() {
 		return x;
@@ -19,7 +20,6 @@ public class It implements Player {
 	
 
 	public void move(int direction, int frameheight, int framewidth) {
-		System.out.println(direction);
 		if(direction == 100){
 			if(y - stepY < 0) {
 				
@@ -55,7 +55,9 @@ public class It implements Player {
 	}
 	public void draw(Graphics2D g2d) {
 		Shape itShape = new Ellipse2D.Double(x, y, 20, 20);
+		g2d.setColor(Color.GREEN);
 		g2d.fill(itShape);
+		g2d.setColor(Color.BLACK);
 
 	}
 
