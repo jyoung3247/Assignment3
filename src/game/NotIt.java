@@ -2,7 +2,7 @@ package game;
 
 import java.awt.Graphics2D;
 import java.awt.Shape;
-import java.awt.geom.Rectangle2D;
+import java.awt.geom.Ellipse2D;
 import java.lang.Math;
 
 public class NotIt implements Player {
@@ -59,7 +59,7 @@ public class NotIt implements Player {
 	public void draw(Graphics2D g2d) {
 		// TODO Auto-generated method stub
 		if(!tagged) {
-			Shape myShape = new Rectangle2D.Double(myX, myY, 20, 20);
+			Shape myShape = new Ellipse2D.Double(myX, myY, 20, 20);
 			g2d.fill(myShape);
 		}
 	}

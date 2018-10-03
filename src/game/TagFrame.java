@@ -26,7 +26,6 @@ public class TagFrame extends JFrame {
 	private NotIt player2;
 	private NotIt player3;
 	private NotIt player4;
-	private Timer starttimer;
 	private JPanel displayPanel;
 
 	
@@ -40,10 +39,7 @@ public class TagFrame extends JFrame {
 		public void keyPressed(KeyEvent e) {
 			int boundaryheight = displayPanel.getHeight();
 			int boundarywidth = displayPanel.getWidth();
-			
 			int ID = e.getKeyCode();
-			
-			
 			
 			if(ID == KeyEvent.VK_DOWN) {
 				itplayer.move(101, boundaryheight, boundarywidth);
@@ -57,7 +53,9 @@ public class TagFrame extends JFrame {
 			if(ID == KeyEvent.VK_RIGHT) {
 				itplayer.move(103, boundaryheight, boundarywidth);
 			}
-			
+			player2.moveAway(boundaryheight, boundarywidth);
+			player3.moveAway(boundaryheight, boundarywidth);
+			player4.moveAway(boundaryheight, boundarywidth);
 			repaint();
 		}
 
@@ -69,22 +67,6 @@ public class TagFrame extends JFrame {
 		
 	}
 	
-	private class startTimer implements ActionListener{
-		public void actionPerformed(ActionEvent e) {
-			starttimer.start();
-		}
-	}
-	
-	private class doButtons implements ActionListener{
-		public void actionPerformed(ActionEvent e) {
-			int boundaryheight = displayPanel.getHeight();
-			int boundarywidth = displayPanel.getWidth();
-			player2.moveAway(boundaryheight, boundarywidth);
-			player3.moveAway(boundaryheight, boundarywidth);
-			player4.moveAway(boundaryheight, boundarywidth);
-			repaint();
-		}
-	}
 
 	/**
 	 * Create the frame.
@@ -114,7 +96,7 @@ public class TagFrame extends JFrame {
 		JButton startButton = new JButton("Start");
 		startButton.setHorizontalAlignment(SwingConstants.LEFT);
 		scorePanel.add(startButton);
-		startButton.addActionListener(new startTimer());
+
 		startButton.setFocusable(false);
 
 		
@@ -137,8 +119,7 @@ public class TagFrame extends JFrame {
 		displayPanel.setFocusable(true);
 		displayPanel.addKeyListener(new doArrows());
 		
-		
-		starttimer = new Timer(50, new doButtons());
+
 
 	}
 	
